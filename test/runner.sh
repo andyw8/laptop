@@ -14,8 +14,8 @@ for vagrantfile in test/Vagrantfile.*; do
   ln -sf "$vagrantfile" ./Vagrantfile || failure 'Unable to link Vagrantfile'
 
   message 'Destroying and recreating virtual machine'
-  vagrant destroy || failure 'Unable to destroy existing VM'
-  vagrant up      || failure 'Unable to start virtual machine'
+  vagrant destroy
+  vagrant up || failure 'Unable to start virtual machine'
 
   # TODO: Create a Vagrantfile.mac that uses VMWare Fusion to run OSX
   if echo "$vagrantfile" | grep -q '\.mac$'; then
