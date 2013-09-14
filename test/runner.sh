@@ -38,7 +38,9 @@ for vagrantfile in test/Vagrantfile.*; do
   [ "$actual_ruby" = "$expected_ruby" ] \
     || failure 'Installation did not install the correct ruby'
 
-  message "$vagrantfile tested succesffully"
+  message "$vagrantfile tested succesffully, shutting down VM"
+  vagrant halt
+  vagrant destroy
 done
 
 rm -f ./Vagrantfile
